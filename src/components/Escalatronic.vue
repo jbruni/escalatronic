@@ -19,6 +19,23 @@ const modeNames = Object.keys(modes)
 
 const selectedTone = ref(tones[0])
 const selectedMode = ref(modeNames[0])
+const selectedColor = ref('#33AA33')
+
+/*
+const alpha = (2 * 3.1415) / 7
+const r = 100
+const q = 100
+
+let css = ""
+let x = 0
+let y = 0
+
+for (let k = 0; k < 7; k++) {
+  x = Math.round((Math.cos((alpha * k * -1) + (3.1415 / 2)) * r) + q) - 20
+  y = Math.round((Math.sin((alpha * k * -1) + (3.1415 / 2)) * r) + q) * -1 + 180
+  css += `.Seq${k} {\n  top: ${y}px;\n  left: ${x}px;\n}\n\n`
+}
+*/
 </script>
 
 <template>
@@ -39,7 +56,12 @@ const selectedMode = ref(modeNames[0])
         </option>
       </select>
     </h2>
-    <Scale :tone="selectedTone" :mode="modes[selectedMode]" />
+    <h2>
+      Cor:
+      <input v-model="selectedColor">
+    </h2>
+    <br><br><br>
+    <Scale :tone="selectedTone" :mode="modes[selectedMode]" :useColor="selectedColor" />
   </div>
 </template>
 
